@@ -1,0 +1,153 @@
+/* Reset dan dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('asset/adick.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Segoe UI', sans-serif;
+  color: rgb(33, 37, 41);
+}
+
+/* Header & Navbar */
+header nav {
+  background: linear-gradient(to right, rgb(0, 123, 255), rgb(0, 200, 255));
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+nav h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: rgb(255, 255, 150);
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(to bottom right, rgb(0, 170, 255), rgb(0, 123, 255));
+  color: white;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+}
+
+/* Section styling */
+section {
+  background: white;
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+section h3 {
+  color: rgb(0, 123, 255);
+  margin-bottom: 1rem;
+}
+
+/* Tes Mandiri */
+form label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+form input[type="checkbox"] {
+  margin-left: 1rem;
+  transform: scale(1.2);
+}
+
+button {
+  background-color: rgb(0, 123, 255);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: rgb(0, 100, 210);
+}
+
+#result {
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Tips Section */
+ul {
+  padding-left: 1.2rem;
+}
+
+ul li {
+  margin-bottom: 0.8rem;
+  font-size: 1.05rem;
+}
+
+/* Blog Articles */
+article {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-left: 4px solid rgb(0, 123, 255);
+  background: rgb(245, 250, 255);
+  border-radius: 8px;
+}
+
+/* Footer */
+footer {
+  background: rgb(33, 37, 41);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+footer a {
+  color: rgb(0, 200, 255);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: rgb(255, 255, 255);
+}
