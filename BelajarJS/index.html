@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anniversary 1 Tahun</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background-color: #fff0f5;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .card {
+        position: relative;
+        z-index: 2;
+        background: white;
+        padding: 2rem;
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        text-align: center;
+        margin: 2rem auto;
+      }
+
+      .heart {
+        font-size: 4rem;
+        color: #ff4d6d;
+        animation: pop 0.5s ease-in-out;
+      }
+
+      @keyframes pop {
+        0% {
+          transform: scale(0);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        color: #333;
+        margin-top: 1rem;
+      }
+
+      p {
+        color: #666;
+        margin: 1rem 0 2rem;
+      }
+
+      .btn {
+        background-color: #ff4d6d;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 999px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin: 0.25rem;
+      }
+
+      .btn:hover {
+        background-color: #e63950;
+      }
+
+      .gallery img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 1rem;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        margin: 0.5rem;
+      }
+
+      #gallery {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 2rem;
+        background-color: #fff0f5;
+        position: relative;
+        z-index: 2;
+        box-sizing: border-box;
+      }
+
+      #gallery h2 {
+        color: #333;
+        margin-bottom: 1rem;
+      }
+
+      #gallery .btn {
+        margin-top: 1rem;
+      }
+
+      #youtubePlayer {
+        display: none;
+      }
+
+      .hearts-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+        pointer-events: none; /* ⛑️ penting agar tidak blok tombol */
+      }
+
+      .heart-float {
+        position: absolute;
+        color: #ff4d6d;
+        font-size: 2rem;
+        animation: floatHearts 10s infinite linear;
+      }
+
+      @keyframes floatHearts {
+        0% {
+          transform: translateY(100vh) scale(0.5);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh) scale(1.2);
+          opacity: 0;
+        }
+      }
+
+      #passwordInput {
+        text-align: center;
+      }
+
+      #closing {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url("bgchupa.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        padding: 2rem;
+        min-height: 100vh;
+        text-align: center;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 2;
+      }
+
+      #closing h1,
+      #closing p,
+      #closing .btn {
+        color: white;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+      }
+    </style>
+  </head>
+
+  <body>
+    <audio id="bgm" autoplay loop hidden>
+      <source src="EverydayILoveYou.mp3" type="audio/mpeg" />
+      Browser kamu tidak mendukung elemen audio.
+    </audio>
+
+    <div class="card" id="cover">
+      <h1>💌 Khusus Buat Chupaa 💌</h1>
+      <p>Masukin Passwordnya yaa, kalo bukan chupa gatau pastii.</p>
+      <p>Clue nya tanggal spesial.</p>
+      <input
+        type="password"
+        id="passwordInput"
+        placeholder="Kata Sandi"
+        style="
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          border: 1px solid #ccc;
+          width: 100%;
+          margin-bottom: 1rem;
+        "
+      />
+      <button class="btn" onclick="checkPassword()">Masuk</button>
+    </div>
+
+    <div class="card" id="home" style="display: none">
+      <div class="heart">❤️</div>
+      <h1>Selamat Anniversary ke-1</h1>
+      <p>
+        Makasih yaa udah jadi bagian dari hidupku selama satu tahun ini. Aku
+        bahagia kalo sama Chupaa ❤️
+      </p>
+      <button class="btn" onclick="showMessage()">
+        Buka yang ini dulu oteyy
+      </button>
+      <button class="btn" onclick="showGallery()">
+        Habis tuh buka yang ini
+      </button>
+    </div>
+
+    <div class="card" id="message" style="display: none">
+      <h1>Pesan Spesial Buat Chupakuu 💖</h1>
+      <p>
+        Aku cinta chupa tuh lebih dari yang bisa aku bilang. Makasih ya udah mau
+        jadi chupa apa adanya, dan buat semua rasa seneng yang udh chupa kasih.
+        Setiap hari bisa komunikasi sama chupa itu adalah hadiah. Selamat
+        anniversary pertama kita, semoga banyak tahun-tahun bahagia kedepannya
+        ya tayangg.
+      </p>
+      <button class="btn" onclick="backToHome()">Kalo mau balik yg ini</button>
+    </div>
+
+    <div id="gallery">
+      <h2>Kenangan Kita ❤️</h2>
+      <div class="gallery">
+        <img src="gam1.jpg" alt="Foto 1" />
+        <img src="gam2.jpg" alt="Foto 2" />
+        <img src="gam3.jpg" alt="Foto 3" />
+        <img src="gam4.jpg" alt="Foto 4" />
+      </div>
+      <button class="btn" onclick="backToHomeFromGallery()">
+        Kalo mau balik yang ini
+      </button>
+      <button class="btn" onclick="showClosing()">
+        Last message buat anniv kita yg pertama
+      </button>
+    </div>
+
+    <div id="closing">
+      <h1>Maaf ya sayang... 😔</h1>
+      <p>
+        Maaf kalau aku selama ini belum bisa jadi laki-laki yang baik buat
+        chupa, yang chupa harapin, yang chupa impiin. Aku masih banyak
+        kurangnya, tapi aku janji akan terus belajar dan berusaha buat jadi
+        lebih baik buat kita. Makasih yaaa karena tetep bertahan sama aku sejauh
+        ini. Aku bersyukur banget punya chupaa. ❤️
+      </p>
+      <p>
+        Btw maaf juga belum bisa kasih kenangan yang banyak buat chupa, aku
+        bakal sebisa mungkin senengin chupa, aku juga tau aku banyak kekurangan
+        yang halangin aku buat bisa senengin chupa. Tapi aku bakal berusaha
+        terus biar chupa bisa ketawa terus.
+      </p>
+      <p>Makasih banyak ya sayang - Theodore</p>
+      <button class="btn" onclick="backToHomeFromClosing()">
+        Kembali ke Home
+      </button>
+    </div>
+
+    <div class="hearts-background" id="hearts-background"></div>
+
+    <script>
+      const gallery = document.getElementById("gallery");
+      const home = document.getElementById("home");
+      const cover = document.getElementById("cover");
+      const message = document.getElementById("message");
+      const closing = document.getElementById("closing");
+
+      function checkPassword() {
+        const input = document.getElementById("passwordInput").value;
+        const correctPassword = "130724";
+        if (input === correctPassword) {
+          cover.style.display = "none";
+          home.style.display = "block";
+          document.getElementById("bgm").play();
+        } else {
+          alert("Kata sandi salah! Coba lagi ya 💌");
+        }
+      }
+
+      function showMessage() {
+        home.style.display = "none";
+        message.style.display = "block";
+      }
+
+      function backToHome() {
+        message.style.display = "none";
+        home.style.display = "block";
+      }
+
+      function showGallery() {
+        home.style.display = "none";
+        gallery.style.display = "flex";
+      }
+
+      function backToHomeFromGallery() {
+        gallery.style.display = "none";
+        home.style.display = "block";
+      }
+
+      function showClosing() {
+        gallery.style.display = "none";
+        closing.style.display = "flex";
+      }
+
+      function backToHomeFromClosing() {
+        closing.style.display = "none";
+        home.style.display = "block";
+      }
+
+      const heartsContainer = document.getElementById("hearts-background");
+      const numHearts = 30;
+      for (let i = 0; i < numHearts; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart-float");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = 5 + Math.random() * 10 + "s";
+        heart.style.fontSize = 1 + Math.random() * 2 + "rem";
+        heart.textContent = "❤️";
+        heartsContainer.appendChild(heart);
+      }
+    </script>
+  </body>
+</html>
